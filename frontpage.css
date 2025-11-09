@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+}
+.background-image {
+  background-image: url("https://fde-sto-shop-p-001.ifolor.net/public/content/dam/ifolor/inspire-gallery/inspirationen/animal-shelter/Animal%20Shelter%20-%20Overview%20Image%20and%20Cover%20Image%20-%2021-9.jpg");
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.content {
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+
+.navbar {
+  font-size: 2em;
+  background-color: rgb(118, 7, 182);
+  overflow: hidden;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+}
+
+.navbar a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: rgb(96, 0, 151);
+  color: black;
+}
+
+.navbar a.active {
+  background-color: rgb(190, 100, 241);
+  color: white;
+}
+
+a:visited {
+  color: #f2f2f2;
+  background-color: transparent;
+  text-decoration: none;
+}

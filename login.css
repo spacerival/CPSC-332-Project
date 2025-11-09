@@ -1,0 +1,219 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: "Arial", sans-serif;
+}
+
+.background-image {
+  background-image: url("https://fde-sto-shop-p-001.ifolor.net/public/content/dam/ifolor/inspire-gallery/inspirationen/animal-shelter/Animal%20Shelter%20-%20Overview%20Image%20and%20Cover%20Image%20-%2021-9.jpg");
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Navbar Styles - Fixed at top */
+.navbar {
+  font-size: 2em;
+  background-color: rgb(118, 7, 182);
+  overflow: hidden;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.navbar a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: rgb(96, 0, 151);
+  color: black;
+}
+
+.navbar a.active {
+  background-color: rgb(190, 100, 241);
+  color: white;
+}
+
+.content {
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  max-width: 500px;
+  padding: 2.5rem;
+  text-align: center;
+  border-radius: 15px;
+  margin-top: 20px; /* Add margin to account for fixed navbar */
+}
+
+/* Form Styles - Applied to ALL input types */
+.content h1 {
+  color: white;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.content label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #f1f1f1;
+  font-weight: 500;
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+/* Unified input styles for ALL input types */
+.content input[type="text"],
+.content input[type="password"],
+.content input[type="email"],
+.content input[type="tel"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid rgba(241, 241, 241, 0.3);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.9);
+  display: block;
+}
+
+.content input[type="text"]:focus,
+.content input[type="password"]:focus,
+.content input[type="email"]:focus,
+.content input[type="tel"]:focus {
+  outline: none;
+  border-color: rgb(118, 7, 182);
+  box-shadow: 0 0 0 3px rgba(118, 7, 182, 0.3);
+  background: white;
+}
+
+.content button[type="submit"] {
+  background: linear-gradient(
+    135deg,
+    rgb(118, 7, 182) 0%,
+    rgb(96, 0, 151) 100%
+  );
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.content button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(118, 7, 182, 0.4);
+}
+
+.content button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+.content p {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #f1f1f1;
+  font-size: 1rem;
+}
+
+.content a {
+  color: rgb(190, 100, 241);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.content a:hover {
+  color: rgb(220, 150, 255);
+  text-decoration: underline;
+}
+
+/* Remove the <br> tags since we're using flexbox gap */
+.content br {
+  display: none;
+}
+
+a:visited {
+  color: #f2f2f2;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .content {
+    width: 90%;
+    padding: 2rem 1.5rem;
+    margin-top: 30px; /* Adjust margin for smaller screens */
+  }
+
+  .content h1 {
+    font-size: 1.5rem;
+  }
+
+  .navbar {
+    font-size: 1.5em;
+  }
+
+  .navbar a {
+    padding: 12px 14px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    width: 95%;
+    padding: 1.5rem 1rem;
+    margin-top: 25px;
+  }
+
+  .content h1 {
+    font-size: 1.3rem;
+  }
+
+  .content form {
+    gap: 1rem;
+  }
+}
