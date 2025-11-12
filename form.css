@@ -73,6 +73,7 @@ html {
   margin-top: 20px; /* Add margin to account for fixed navbar */
 }
 
+
 /* Form Styles - Applied to ALL input types */
 .content h1 {
   color: white;
@@ -216,4 +217,20 @@ a:visited {
   .content form {
     gap: 1rem;
   }
+}
+
+.format {
+  margin-top: 10%;
+  margin-left: 10%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items: center;
+  gap: 1em;
+}
+
+.grid label {
+  margin-left: 3rem;
 }
