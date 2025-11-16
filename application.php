@@ -56,8 +56,8 @@
         <input type="radio" id="landlord-allowed" name="landlord-permission" value="landlord-allowed">
         <label for="landlord-allowed">Yes</label><br>
         <input type="radio" id="landlord-unallowed" name="landlord-permission" value="landlord-unallowed">
-       <label for="landlord-unallowed">No</label><br>
-       <input type="radio" id="landlord-inapplicable" name="landlord-permission" value="landlord-inapplicable">
+        <label for="landlord-unallowed">No</label><br>
+        <input type="radio" id="landlord-inapplicable" name="landlord-permission" value="landlord-inapplicable">
         <label for="landlord-inapplicable">Inapplicable</label>
 
 

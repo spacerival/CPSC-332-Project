@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PetMatch</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/9e304416f8.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="navbar">
+      <a class="active" href="frontpage.html">PetMatch <i class="fa-solid fa-paw"></i></a>
+      <a href="login_index.html">Login</a>
+      <a href="signup.html">Sign Up</a>
+      <a href="application.html">Application</a>
+    </div>
+    
+    <!-- Slideshow Carousel -->
+    <div class="slideshow_container">
+      <img class="slides fade" src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg">
+      <img class="slides fade" src="https://www.shutterstock.com/image-photo/man-sitting-on-sofa-domestic-600nw-2388790877.jpg">
+      <img class="slides fade" src="https://images.pexels.com/photos/1490908/pexels-photo-1490908.jpeg?cs=srgb&dl=pexels-svetozar-milashevich-99573-1490908.jpg&fm=jpg">
+      <img class="slides fade" src="https://img.freepik.com/premium-photo/playful-cat_270100-2136.jpg">
+      <img class="slides fade" src="https://www.shutterstock.com/image-photo/summer-portrait-fluffy-siberian-red-600nw-2470860617.jpg">
+      <img class="slides fade" src="https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F0JTIwYW5kJTIwZG9nfGVufDB8fDB8fHww&fm=jpg&q=60&w=3000">
+      <div class="overlay">
+        <h1>Welcome to PetMatch<br>
+        Your trusted platform for finding the perfect pet companion</h1>
+      </div>
+    </div>
+    <br>
+
+    <div class="description">
+      <p>
+        At PetMatch, we connect loving pet owners with pets in need of a forever
+        home. Our mission is to make pet adoption easy and accessible for
+        everyone.
+      </p>
+      <br>
+      <h2>Get Started</h2>
+      <p>
+        Ready to find your new best friend?
+        <a href="application.html">Apply for adoption</a> or
+        <a href="login_index.html">log in</a> to your account.
+      </p>
+    </div>
+
+    <script src="frontpage.js"></script>
+  </body>
+</html>
+
+
+<!--
+<div>
+      <h1>Welcome to PetMatch</h1>
+      <p>Your trusted platform for finding the perfect pet companion.</p>
+
+      <h2>About Us</h2>
+      <p>
+        At PetMatch, we connect loving pet owners with pets in need of a forever
+        home. Our mission is to make pet adoption easy and accessible for
+        everyone.
+      </p>
+      <h2>Get Started</h2>
+      <p>
+        Ready to find your new best friend?
+        <a href="application.html">Apply for adoption</a> or
+        <a href="login_index.html">log in</a> to your account.
+      </p>
+    </div>
+
+-->
