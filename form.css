@@ -10,6 +10,35 @@ html {
   font-family: "Arial", sans-serif;
 }
 
+label {
+  font-size: 16px;
+}
+
+input {
+  height: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 7px;
+  border: none;
+  border-bottom: 1px solid black;
+  transition: all 0.3s ease;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: rgb(96, 0, 151);
+}
+
+input:focus {
+  outline: none;
+  box-shadow:0px 5px 45px rgb(96, 0, 151); 
+}
+
+select {
+  font-size: 14px;
+  padding: 4px;
+}
+
 .background-image {
   background-image: url("https://fde-sto-shop-p-001.ifolor.net/public/content/dam/ifolor/inspire-gallery/inspirationen/animal-shelter/Animal%20Shelter%20-%20Overview%20Image%20and%20Cover%20Image%20-%2021-9.jpg");
   filter: blur(8px);
@@ -124,7 +153,7 @@ html {
   background: white;
 }
 
-.content button[type="submit"] {
+button[type="submit"] {
   background: linear-gradient(
     135deg,
     rgb(118, 7, 182) 0%,
@@ -142,12 +171,12 @@ html {
   width: 100%;
 }
 
-.content button[type="submit"]:hover {
+button[type="submit"]:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(118, 7, 182, 0.4);
 }
 
-.content button[type="submit"]:active {
+button[type="submit"]:active {
   transform: translateY(0);
 }
 
@@ -219,9 +248,13 @@ a:visited {
   }
 }
 
+.question {
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
 .format {
-  margin-top: 10%;
-  margin-left: 10%;
+  margin: 10% 15% 0 10%;
 }
 
 .grid {
