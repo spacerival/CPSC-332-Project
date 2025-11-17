@@ -13,10 +13,10 @@
 
     <!-- Navigation bar -->
     <div class="navbar">
-      <a href="frontpage.html">PetMatch <i class="fa-solid fa-paw"></i></a>
-      <a class="active" href="login_index.html">Login</a>
-      <a href="signup.html">Sign Up</a>
-      <a href="application.html">Application</a>
+      <a href="frontpage.php">PetMatch <i class="fa-solid fa-paw"></i></a>
+      <a class="active" href="login_index.php">Login</a>
+      <a href="signup.php">Sign Up</a>
+      <a href="application.php">Application</a>
     </div>
 
     <!-- Main content container -->

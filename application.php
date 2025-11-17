@@ -9,10 +9,10 @@
   </head>
   <body>
     <div class="navbar">
-      <a href="frontpage.html">PetMatch <i class="fa-solid fa-paw"></i></a>
-      <a href="login_index.html">Login</a>
-      <a href="signup.html">Sign Up</a>
-      <a class="active" href="application.html">Application</a>
+      <a href="frontpage.php">PetMatch <i class="fa-solid fa-paw"></i></a>
+      <a href="login_index.php">Login</a>
+      <a href="signup.php">Sign Up</a>
+      <a class="active" href="application.php">Application</a>
     </div>
 
     <!--TO DO: Fix the formatting (1) + Stylize (2)-->
