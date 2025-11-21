@@ -17,6 +17,7 @@
       <a class="active" href="login_index.php">Login</a>
       <a href="signup.php">Sign Up</a>
       <a href="application.php">Application</a>
+      <a href="searchpage.php">Adopt</a>
     </div>
 
     <!-- Main content container -->

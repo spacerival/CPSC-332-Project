@@ -1,0 +1,331 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: "Arial", sans-serif;
+  overflow-x: hidden;
+}
+
+.background-image {
+  background-image: url("https://fde-sto-shop-p-001.ifolor.net/public/content/dam/ifolor/inspire-gallery/inspirationen/animal-shelter/Animal%20Shelter%20-%20Overview%20Image%20and%20Cover%20Image%20-%2021-9.jpg");
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+/* Navbar Styles */
+.navbar {
+  font-size: 1.5em;
+  background-color: rgb(118, 7, 182);
+  overflow: hidden;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 50px;
+}
+
+.navbar a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 10px 12px;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 30px;
+}
+
+.navbar a:hover {
+  background-color: rgb(96, 0, 151);
+  color: black;
+}
+
+.navbar a.active {
+  background-color: rgb(190, 100, 241);
+  color: white;
+}
+
+/* Main content container */
+.content {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-weight: bold;
+  border: 2px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 90%;
+  max-width: 1200px;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 12px;
+  margin-top: 0;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.content h1 {
+  color: white;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Search Section */
+.search-container {
+  position: relative;
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 45px 12px 15px;
+  border: 2px solid rgba(241, 241, 241, 0.3);
+  border-radius: 25px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: rgb(118, 7, 182);
+  box-shadow: 0 0 0 3px rgba(118, 7, 182, 0.3);
+  background: white;
+}
+
+.search-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgb(118, 7, 182);
+  font-size: 1.2rem;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border: 2px solid rgb(118, 7, 182);
+  border-radius: 20px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: rgb(118, 7, 182);
+  color: white;
+}
+
+/* Pets Grid */
+.pets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.pet-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.pet-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(118, 7, 182, 0.3);
+}
+
+.pet-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.pet-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: rgb(118, 7, 182);
+  margin-bottom: 0.5rem;
+}
+
+.pet-breed,
+.pet-age,
+.pet-location {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.3rem;
+}
+
+.adopt-btn {
+  background: linear-gradient(
+    135deg,
+    rgb(118, 7, 182) 0%,
+    rgb(96, 0, 151) 100%
+  );
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.adopt-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(118, 7, 182, 0.4);
+}
+
+.no-results {
+  text-align: center;
+  color: white;
+  font-size: 1.1rem;
+  margin-top: 2rem;
+  grid-column: 1 / -1;
+}
+
+.content p {
+  text-align: center;
+  margin-top: 1rem;
+  color: #f1f1f1;
+  font-size: 0.9rem;
+}
+
+.content a {
+  color: rgb(190, 100, 241);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.content a:hover {
+  color: rgb(220, 150, 255);
+  text-decoration: underline;
+}
+
+/* Scrollbar styling */
+.content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: rgb(118, 7, 182);
+  border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: rgb(96, 0, 151);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .content {
+    width: 95%;
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+
+  .content h1 {
+    font-size: 1.5rem;
+  }
+
+  .pets-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .navbar {
+    font-size: 1.3em;
+    height: 45px;
+  }
+
+  .navbar a {
+    padding: 8px 10px;
+    font-size: 13px;
+    line-height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    width: 98%;
+    padding: 1rem;
+  }
+
+  .content h1 {
+    font-size: 1.3rem;
+  }
+
+  .pets-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .filter-buttons {
+    gap: 0.3rem;
+  }
+
+  .filter-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  .navbar {
+    height: 40px;
+  }
+
+  .navbar a {
+    padding: 6px 8px;
+    font-size: 12px;
+    line-height: 26px;
+  }
+}
