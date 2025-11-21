@@ -108,7 +108,7 @@
 
         <!--Placeholder. Perhaps later have one input field ask how many children and 'x' amount of fields will
         pop up depending on the inputed value asking for the ages of each-->
-        <p class="question"><b>If you <em>do</em> have children, please state how many and hold old each of them are</b></p>
+        <p class="question"><b>If you <em>do</em> have children, please state how many and how old each of them are</b></p>
         <textarea id="children-description" name="children-description" rows="7" cols="75"></textarea>
 
         <h2>Adoption Questions</h2>
