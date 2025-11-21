@@ -1,23 +1,7 @@
 -- creating database
+
 CREATE DATABASE IF NOT EXISTS petmatcherDB;
 USE petmatcherDB;
-
--- Pets table
-CREATE table IF NOT EXISTS pets (
-    pet_id INT AUTO_INCREMENT PRIMARY KEY,
-    agency_id INT NOT NULL,
-    name VARCHAR(100) NOT NULL,
-    animal_type VARCHAR(50) NOT NULL,    -- dog, cat, etc.
-    breed VARCHAR(100),
-    age INT,
-    status ENUM('available', 'pending', 'adopted') DEFAULT 'available',
-    description TEXT,
-    city VARCHAR(100),
-    state VARCHAR(100),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (agency_id) REFERENCES users(user_id)
-        ON DELETE CASCADE
-);
 
 -- User & agency table
 CREATE table IF NOT EXISTS users (
@@ -33,6 +17,22 @@ CREATE table IF NOT EXISTS users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Pets table
+CREATE table IF NOT EXISTS pets (
+    pet_id INT AUTO_INCREMENT PRIMARY KEY,
+    agency_id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    animal_type VARCHAR(50) NOT NULL,  
+    breed VARCHAR(100),
+    age INT,
+    status ENUM('available', 'pending', 'adopted') DEFAULT 'available',
+    description TEXT,
+    city VARCHAR(100),
+    state VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (agency_id) REFERENCES users(user_id)
+        ON DELETE CASCADE
+);
 -- inquiries table
 CREATE TABLE IF NOT EXISTS inquiries (
     inquiry_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS inquiries (
     owned_other BIT,
     
     -- current pets
-    has_pets_experience BIT,
+    has_current_pets BIT,
     current_pets_description TEXT,
     
     -- household info
@@ -112,7 +112,7 @@ INSERT INTO inquiries (
     home_type, rent_or_own, landlord_permission,
     has_pet_experience, owned_dog, owned_cat, owned_bird, owned_reptile, owned_rodent, owned_other,
     has_current_pets, current_pets_description,
-    household_people, has_children, children_description,
+    household_people, has_children,
     adoption_reason, hours_pet_alone, status
 )
 VALUES
@@ -122,8 +122,9 @@ VALUES
     'house', 'homeowner', 'landlord-inapplicable',
     1, 1, 0, 0, 0, 0, 0,
     0, NULL,
-    2, 0, NULL,
+    2, 0,
     'I want to adopt Buddy because he matches my active lifestyle.',
     'alone-35',
     'new'
 );
+
