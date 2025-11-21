@@ -30,6 +30,9 @@
         <label for="lastname">Last Name:</label>
         <input type="text" id="lastname" name="lastname" required />
         <br />
+        <!-- TO DO: Check against database to prevent duplicate usernames -->
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required />
         <br />
