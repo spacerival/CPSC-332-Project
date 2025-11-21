@@ -22,7 +22,7 @@
     <!-- Main content container -->
     <div class="content">
       <h1>PetMatch: Login</h1>
-      <form>
+      <form action="process_login.php" method="POST">
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required />
         <br />

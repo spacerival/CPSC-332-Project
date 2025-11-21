@@ -22,7 +22,7 @@
     <!-- Main content container -->
     <div class="content">
       <h1>PetMatch: Profile Creation</h1>
-      <form>
+      <form form action="process_signup.php" method="POST">
         <label for="fullname">Full Name:</label>
         <input type="text" id="fullname" name="fullname" required />
         <br />
