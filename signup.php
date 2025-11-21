@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PetMatch: Sign Up</title>
-    <link rel="stylesheet" href="form.css" />
+    <link rel="stylesheet" href="signup.css" />
     <script src="https://kit.fontawesome.com/9e304416f8.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -23,8 +23,11 @@
     <div class="content">
       <h1>PetMatch: Profile Creation</h1>
       <form form action="process_signup.php" method="POST">
-        <label for="fullname">Full Name:</label>
-        <input type="text" id="fullname" name="fullname" required />
+        <label for="firstname">First Name:</label>
+        <input type="text" id="firstname" name="firstname" required />
+        <br />
+        <label for="lastname">Last Name:</label>
+        <input type="text" id="lastname" name="lastname" required />
         <br />
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required />

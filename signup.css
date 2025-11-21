@@ -1,0 +1,330 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: "Arial", sans-serif;
+  overflow-x: hidden;
+}
+
+label {
+  font-size: 14px;
+}
+
+input {
+  padding: 8px;
+  margin-top: 3px;
+  margin-bottom: 5px;
+  border: none;
+  border-bottom: 1px solid black;
+  transition: all 0.3s ease;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  accent-color: rgb(96, 0, 151);
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0px 5px 45px rgb(96, 0, 151);
+}
+
+select {
+  font-size: 14px;
+  padding: 4px;
+}
+
+.background-image {
+  background-image: url("https://fde-sto-shop-p-001.ifolor.net/public/content/dam/ifolor/inspire-gallery/inspirationen/animal-shelter/Animal%20Shelter%20-%20Overview%20Image%20and%20Cover%20Image%20-%2021-9.jpg");
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+/* Navbar Styles - Fixed at top */
+.navbar {
+  font-size: 1.5em;
+  background-color: rgb(118, 7, 182);
+  overflow: hidden;
+  color: #fff;
+  font-family: "Arial", sans-serif;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 50px;
+}
+
+.navbar a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 10px 12px;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 30px;
+}
+
+.navbar a:hover {
+  background-color: rgb(96, 0, 151);
+  color: black;
+}
+
+.navbar a.active {
+  background-color: rgb(190, 100, 241);
+  color: white;
+}
+
+/* Main content container with proper centering */
+.content {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-weight: bold;
+  border: 2px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 85%;
+  max-width: 450px;
+  padding: 1.5rem;
+  text-align: center;
+  border-radius: 12px;
+  margin-top: 0;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Form Styles */
+.content h1 {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding-top: 0;
+}
+
+/* Compact vertical form layout */
+.content form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+.content label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #f1f1f1;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-align: center;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+/* Unified input styles for ALL input types */
+.content input[type="text"],
+.content input[type="password"],
+.content input[type="email"],
+.content input[type="tel"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 2px solid rgba(241, 241, 241, 0.3);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+.content input[type="text"]:focus,
+.content input[type="password"]:focus,
+.content input[type="email"]:focus,
+.content input[type="tel"]:focus {
+  outline: none;
+  border-color: rgb(118, 7, 182);
+  box-shadow: 0 0 0 2px rgba(118, 7, 182, 0.3);
+  background: white;
+}
+
+button[type="submit"] {
+  background: linear-gradient(
+    135deg,
+    rgb(118, 7, 182) 0%,
+    rgb(96, 0, 151) 100%
+  );
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(118, 7, 182, 0.4);
+}
+
+button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+.content p {
+  text-align: center;
+  margin-top: 1rem;
+  color: #f1f1f1;
+  font-size: 0.9rem;
+}
+
+.content a {
+  color: rgb(190, 100, 241);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.content a:hover {
+  color: rgb(220, 150, 255);
+  text-decoration: underline;
+}
+
+/* Remove the <br> tags since we're using flexbox */
+.content br {
+  display: none;
+}
+
+a:visited {
+  color: #f2f2f2;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .content {
+    width: 90%;
+    padding: 1.2rem;
+    max-width: 400px;
+  }
+
+  .content h1 {
+    font-size: 1.3rem;
+  }
+
+  .content form {
+    gap: 0.7rem;
+  }
+
+  .navbar {
+    font-size: 1.3em;
+    height: 45px;
+  }
+
+  .navbar a {
+    padding: 8px 10px;
+    font-size: 13px;
+    line-height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    width: 92%;
+    padding: 1rem;
+    max-width: 350px;
+  }
+
+  .content h1 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .content form {
+    gap: 0.6rem;
+  }
+
+  .content input[type="text"],
+  .content input[type="password"],
+  .content input[type="email"],
+  .content input[type="tel"] {
+    padding: 7px 8px;
+    font-size: 0.85rem;
+  }
+
+  button[type="submit"] {
+    padding: 9px 14px;
+    font-size: 0.95rem;
+  }
+
+  .navbar {
+    height: 40px;
+  }
+
+  .navbar a {
+    padding: 6px 8px;
+    font-size: 12px;
+    line-height: 26px;
+  }
+}
+
+/* Scrollbar styling for the content */
+.content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: rgb(118, 7, 182);
+  border-radius: 3px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: rgb(96, 0, 151);
+}
+
+.question {
+  margin-top: 15px;
+  margin-bottom: 3px;
+}
+
+.format {
+  margin: 8% 12% 0 8%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items: center;
+  gap: 0.8em;
+}
+
+.grid label {
+  margin-left: 2rem;
+}
