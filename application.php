@@ -15,7 +15,6 @@
       <a class="active" href="application.php">Application</a>
     </div>
 
-    <!--TO DO: Fix the formatting (1) + Stylize (2)-->
     <div class="format">
       <h1>PetMatch Application</h1><br>
       <form action="process_application.php" method="POST">
@@ -42,7 +41,6 @@
       
 
         <h2>Housing Information</h2>
-
         <p class="question"><b>What type of home do you currently live in?</b></p>
         <input type="radio" id="house" name="home-type" value="house" required>
         <label for="house">House</label><br>
@@ -51,7 +49,6 @@
         <input type="radio" id="rv-trailer" name="home-type" value="rv-trailer">
         <label for="rv-trailer">RV/Trailer</label>
         
-
         <p class="question"><b>Do you rent or own?</b></p>
         <input type="radio" id="renter" name="is-rent" value="renter" required>
         <label for="renter">Yes, I do rent</label><br>
@@ -91,9 +88,9 @@
         <label for="owned-other">Other</label>
 
         <p class="question"><b>Do you currently have other pets?</b></p>
-        <input type="radio" id="has-pet-experience" name="pet-experience" value="has-pet-experience" required>
+        <input type="radio" id="current-pet-owner" name="is-pet-owner" value="current-pet-owner" required>
         <label for="has-pet-experience">Yes, I do</label><br>
-        <input type="radio" id="no-pet-experience" name="pet-experience" value="no-pet-experience">
+        <input type="radio" id="not-pet-owner" name="is-pet-owner" value="not-pet-owner">
         <label for="no-pet-experience">No, I don't</label>
 
         <p class="question"><b>If you <em>do</em> currently own pets, please describe them</b></p>
