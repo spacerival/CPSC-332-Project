@@ -38,9 +38,9 @@ CREATE TABLE IF NOT EXISTS inquiries (
     inquiry_id INT AUTO_INCREMENT PRIMARY KEY,
     
     -- links to other tables
-    pet_id INT NOT NULL,
-    adopter_id INT NOT NULL,
-    agency_id INT NOT NULL,
+    pet_id INT NULL,    -- Temporarily NULl until we implement database into application form
+    adopter_id INT NULL, -- Temporarily NULl until we implement database (if NOT NULL right now, errors happen)
+    agency_id INT NULL, -- Temporarily NULl until we implement database
     
     -- contact info
     first_name VARCHAR(50) NOT NULL,
@@ -68,8 +68,9 @@ CREATE TABLE IF NOT EXISTS inquiries (
     current_pets_description TEXT,
     
     -- household info
-    household_people INT,
+    household_num INT,
     has_children BIT,
+    children_description TEXT,
     -- maybe add later: children_count INT,
     
     -- adoption-specific questions

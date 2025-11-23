@@ -1,0 +1,7 @@
+# Database configuration with passwords
+config.php
+
+.DS_Store
+*.log
+.env
+node_modules/

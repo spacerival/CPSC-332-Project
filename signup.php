@@ -25,14 +25,18 @@
       <h1>PetMatch: Profile Creation</h1>
       <form form action="process_signup.php" method="POST">
         <label for="firstname">First Name:</label>
-        <input type="text" id="firstname" name="firstname" required />
+        <input type="text" id="firstname" name="first-name" required />
         <br />
         <label for="lastname">Last Name:</label>
-        <input type="text" id="lastname" name="lastname" required />
+        <input type="text" id="lastname" name="last-name" required />
         <br />
         <!-- TO DO: Check against database to prevent duplicate usernames -->
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required />
+        <!-- TO DO: Add a confirm password line. -->
+        <!-- TO DO (optional, when have time): Make sure user inputs strong password -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required/>
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required />
         <br />
