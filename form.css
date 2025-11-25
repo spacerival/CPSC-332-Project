@@ -153,7 +153,7 @@ select {
   background: white;
 }
 
-button[type="submit"] {
+button {
   background: linear-gradient(
     135deg,
     rgb(118, 7, 182) 0%,
@@ -171,12 +171,12 @@ button[type="submit"] {
   width: 100%;
 }
 
-button[type="submit"]:hover {
+button:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(118, 7, 182, 0.4);
 }
 
-button[type="submit"]:active {
+button:active {
   transform: translateY(0);
 }
 
