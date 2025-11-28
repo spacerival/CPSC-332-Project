@@ -1,3 +1,6 @@
+<?php
+require 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,7 +26,7 @@
     <!-- Main content container -->
     <div class="content">
       <h1>PetMatch: Profile Creation</h1>
-      <form form action="process_signup.php" method="POST">
+      <form action="process_signup.php" method="POST">
         <label for="firstname">First Name:</label>
         <input type="text" id="firstname" name="firstname" required />
         <br />
@@ -33,6 +36,8 @@
         <!-- TO DO: Check against database to prevent duplicate usernames -->
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required />
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required />
         <br />

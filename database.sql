@@ -7,10 +7,12 @@ USE petmatcherDB;
 CREATE table IF NOT EXISTS users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
+    username VARCHAR(100) NOT NULL UNIQUE,
     email VARCHAR(150) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
     user_type ENUM('adopter', 'agency') NOT NULL,
     phone VARCHAR(20),
+    address VARCHAR(255),
     city VARCHAR(100),
     state VARCHAR(100),
     preferred_animal_type VARCHAR(50),
@@ -87,12 +89,13 @@ CREATE TABLE IF NOT EXISTS inquiries (
 );
 
 
-INSERT INTO users (name, email, password_hash, user_type, phone, city, state, preferred_animal_type)
+INSERT INTO users (name, username, email, password_hash, user_type, phone, address, city, state, preferred_animal_type)
 VALUES
-('Happy Paws Shelter', 'contact@happypaws.org', 'hashed_pw_1', 'agency', '555-1111', 'Riverside', 'CA', NULL),
-('Cozy Critters Rescue', 'info@cozycritters.org', 'hashed_pw_2', 'agency', '555-2222', 'Anaheim', 'CA', NULL),
-('Alice Johnson', 'alice@example.com', 'hashed_pw_3', 'adopter', '555-3333', 'Fullerton', 'CA', 'dog'),
-('Michael Lee', 'michael@example.com', 'hashed_pw_4', 'adopter', '555-4444', 'Irvine', 'CA', 'cat');
+('Happy Paws Shelter', 'happypaws', 'contact@happypaws.org', 'hashed_pw_1', 'agency', '555-1111', NULL, 'Riverside', 'CA', NULL),
+('Cozy Critters Rescue', 'cozycritters', 'info@cozycritters.org', 'hashed_pw_2', 'agency', '555-2222', NULL, 'Anaheim', 'CA', NULL),
+('Alice Johnson', 'alicej', 'alice@example.com', 'hashed_pw_3', 'adopter', '555-3333', '123 Maple St', 'Fullerton', 'CA', 'dog'),
+('Michael Lee', 'michaell', 'michael@example.com', 'hashed_pw_4', 'adopter', '555-4444', '789 Oak St', 'Irvine', 'CA', 'cat');
+
 
 
 INSERT INTO pets (agency_id, name, animal_type, breed, age, status, description, city, state)
