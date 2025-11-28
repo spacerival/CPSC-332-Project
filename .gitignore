@@ -1,0 +1,10 @@
+# Database configuration with passwords
+config.php
+
+.DS_Store
+*.log
+.env
+node_modules/
+
+db_test.php
+db_connect.php
