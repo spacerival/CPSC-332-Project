@@ -1,3 +1,31 @@
+// Function to get placeholder image based on animal type
+function getPlaceholderImage(animalType) {
+  const images = {
+    dog: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=300&h=200&fit=crop",
+    cat: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=300&h=200&fit=crop",
+    rabbit:
+      "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=300&h=200&fit=crop",
+    bird: "https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=300&h=200&fit=crop",
+  };
+
+  return (
+    images[animalType] ||
+    "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=300&h=200&fit=crop"
+  );
+}
+
+// Function to fetch pets from database
+async function fetchPetsFromDatabase() {
+  try {
+    const response = await fetch("get_pets.php"); // We'll create this file
+    const pets = await response.json();
+    return pets;
+  } catch (error) {
+    console.error("Error fetching pets:", error);
+    return [];
+  }
+}
+
 // DOM elements
 const petsGrid = document.getElementById("petsGrid");
 const searchInput = document.getElementById("searchInput");
@@ -5,10 +33,13 @@ const filterButtons = document.querySelectorAll(".filter-btn");
 
 let currentFilter = "all";
 let currentSearch = "";
+let allPets = []; // This will hold our database pets
 
 // Initialize the page
-function init() {
-  displayPets(pets);
+async function init() {
+  // Fetch pets from database
+  allPets = await fetchPetsFromDatabase();
+  displayPets(allPets);
   setupEventListeners();
 }
 
@@ -23,22 +54,22 @@ function displayPets(petsToDisplay) {
   petsGrid.innerHTML = petsToDisplay
     .map(
       (pet) => `
-        <div class="pet-card" data-type="${pet.type}">
-            <img src="${pet.image}" alt="${pet.name}" class="pet-image">
-            <div class="pet-name">${pet.name}</div>
-            <div class="pet-breed">${pet.breed}</div>
-            <div class="pet-age">${pet.age}</div>
-            <div class="pet-location">${pet.location}</div>
-            <button class="adopt-btn" onclick="adoptPet(${pet.id})">Adopt ${pet.name}</button>
-        </div>
-    `
+                <div class="pet-card" data-type="${pet.type}">
+                    <img src="${pet.image}" alt="${pet.name}" class="pet-image">
+                    <div class="pet-name">${pet.name}</div>
+                    <div class="pet-breed">${pet.breed}</div>
+                    <div class="pet-age">${pet.age}</div>
+                    <div class="pet-location">${pet.location}</div>
+                    <button class="adopt-btn" onclick="adoptPet(${pet.id})">Adopt ${pet.name}</button>
+                </div>
+            `
     )
     .join("");
 }
 
 // Filter and search pets
 function filterPets() {
-  let filteredPets = pets;
+  let filteredPets = allPets;
 
   // Apply type filter
   if (currentFilter !== "all") {
@@ -83,7 +114,7 @@ function setupEventListeners() {
 
 // Adopt pet function
 function adoptPet(petId) {
-  const pet = pets.find((p) => p.id === petId);
+  const pet = allPets.find((p) => p.id === petId);
   if (pet) {
     alert(
       `Thank you for your interest in adopting ${pet.name}! Please complete the adoption application form.`
