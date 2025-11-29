@@ -1,19 +1,7 @@
 <?php
 header('Content-Type: application/json');
+require_once 'db_connect.php';
 
-// Database connection
-$servername = "localhost";
-$username = "root"; // Change if needed
-$password = ""; // Change if needed
-$dbname = "petmatcherDB";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die(json_encode(["error" => "Connection failed: " . $conn->connect_error]));
-}
 
 // Fetch pets from database
 $sql = "SELECT pet_id, name, animal_type, breed, age, status, description, city, state 
