@@ -11,8 +11,7 @@ CREATE table IF NOT EXISTS users (
     password_hash VARCHAR(255) NOT NULL,
     user_type ENUM('adopter', 'agency') NOT NULL,
     phone VARCHAR(20),
-    city VARCHAR(100),
-    state VARCHAR(100),
+    address VARCHAR(255),
     preferred_animal_type VARCHAR(50),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -95,13 +94,13 @@ CREATE TABLE IF NOT EXISTS inquiries (
 -- Test Account PW = test_pw123
 
 -- Inserting sample values into users, pets, and inquiries tables
-INSERT INTO users (name, email, password_hash, user_type, phone, city, state, preferred_animal_type)
+INSERT INTO users (name, email, password_hash, user_type, phone, address, preferred_animal_type)
 VALUES
-('Happy Paws Shelter', 'contact@happypaws.org', ' $2y$12$hIXJyObuIaW6YjcBbRqOXOigHfJxpDo0eEKlvYd140.6Kzze8YNP2', 'agency', '555-1111', 'Riverside', 'CA', NULL),
-('Cozy Critters Rescue', 'info@cozycritters.org', '$2y$12$CypOqpLFVs/SEwBZJZt2ZObzn63ocYocJAs90ML2Ubn..5Q31PQci', 'agency', '555-2222', 'Anaheim', 'CA', NULL),
-('Alice Johnson', 'alice@example.com', '$2y$12$0AH5pLZUUksAC4bSPIn4fuVa9OYBIARLZy14jkZecvbSLFNe7cpe2', 'adopter', '555-3333', 'Fullerton', 'CA', 'dog'),
-('Michael Lee', 'michael@example.com', '$2y$12$JiGSgyezkQS42z4llJSfXuJphoW/ck/90bxEiDdy/pzlDkmy6AJFi', 'adopter', '555-4444', 'Irvine', 'CA', 'cat'),
-('Test User', 'testuser@example.com', '$2y$12$nJEjyu/.dKw4mTnhICj3AOptrCY5zH.ocmSP8Cq0CCrGmm9l87LSW', 'adopter', '123-4567', 'Los Angeles', 'CA', 'dog');
+('Happy Paws Shelter', 'contact@happypaws.org', '$2y$12$hIXJyObuIaW6YjcBbRqOXOigHfJxpDo0eEKlvYd140.6Kzze8YNP2', 'agency', '555-1111', 'Riverside, CA', NULL),
+('Cozy Critters Rescue', 'info@cozycritters.org', '$2y$12$CypOqpLFVs/SEwBZJZt2ZObzn63ocYocJAs90ML2Ubn..5Q31PQci', 'agency', '555-2222', 'Anaheim, CA', NULL),
+('Alice Johnson', 'alice@example.com', '$2y$12$0AH5pLZUUksAC4bSPIn4fuVa9OYBIARLZy14jkZecvbSLFNe7cpe2', 'adopter', '555-3333', 'Fullerton, CA', 'dog'),
+('Michael Lee', 'michael@example.com', '$2y$12$JiGSgyezkQS42z4llJSfXuJphoW/ck/90bxEiDdy/pzlDkmy6AJFi', 'adopter', '555-4444', 'Irvine, CA', 'cat'),
+('Test User', 'testuser@example.com', '$2y$12$nJEjyu/.dKw4mTnhICj3AOptrCY5zH.ocmSP8Cq0CCrGmm9l87LSW', 'adopter', '123-4567', 'Los Angeles, CA', 'dog');
 
 
 INSERT INTO pets (agency_id, name, animal_type, breed, age, status, description, city, state)
