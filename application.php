@@ -1,7 +1,7 @@
 <?php
 // Auto-fill info once user is logged in
 session_start();
-require_once 'db_conntect.php';
+require_once 'db_connect.php';
 
 $logged_in_name = '';
 $logged_in_email = '';
