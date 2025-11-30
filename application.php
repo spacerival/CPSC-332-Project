@@ -3,13 +3,18 @@
 session_start();
 require_once 'db_connect.php';
 
+$logged_in_fname = '';
+$logged_in_lname = '';
 $logged_in_name = '';
 $logged_in_email = '';
 $logged_in_phone = '';
 $logged_in_address = '';
 
+$is_logged_in = isset($_SESSION['user_id']);
+$user_name = $is_logged_in ? $_SESSION['name'] : '';
+
 if (isset($_SESSION['user_id'])) {
-  $user_id = $SESSION['user_id'];
+  $user_id = $_SESSION['user_id'];
   $sql = "SELECT name, email, phone, address FROM users WHERE user_id = ?";
   $stmt = $conn->prepare($sql);
   $stmt->bind_param("i", $user_id);
@@ -27,7 +32,7 @@ if (isset($_SESSION['user_id'])) {
     $logged_in_name = $user['name'];
     $logged_in_email = $user['email'];
     $logged_in_phone = $user['phone'] ?? '';
-    $logged_in_address = $user['address'];
+    $logged_in_address = $user['address'] ?? '';
   }
   $stmt->close();
 }
@@ -45,10 +50,16 @@ if (isset($_SESSION['user_id'])) {
   <body>
     <div class="navbar">
       <a href="frontpage.php">PetMatch <i class="fa-solid fa-paw"></i></a>
-      <a href="login_index.php">Login</a>
-      <a href="signup.php">Sign Up</a>
       <a class="active" href="application.php">Application</a>
       <a href="searchpage.php">Adopt</a>
+      <?php if (!$is_logged_in): ?>
+        <a href="login_index.php">Login</a>
+        <a href="signup.php">Sign Up</a>
+      <?php else: ?>
+        <a href="user_profile.php"><i class="fa-solid fa-circle-user"> 
+          </i><?php echo htmlspecialchars($user_name); ?></a>
+        <a href="logout.php">Logout</a>
+      <?php endif; ?>
     </div>
 
     <div class="format">

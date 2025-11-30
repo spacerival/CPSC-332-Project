@@ -96,11 +96,11 @@ CREATE TABLE IF NOT EXISTS inquiries (
 -- Inserting sample values into users, pets, and inquiries tables
 INSERT INTO users (name, email, password_hash, user_type, phone, address, preferred_animal_type)
 VALUES
-('Happy Paws Shelter', 'contact@happypaws.org', '$2y$12$hIXJyObuIaW6YjcBbRqOXOigHfJxpDo0eEKlvYd140.6Kzze8YNP2', 'agency', '555-1111', 'Riverside, CA', NULL),
-('Cozy Critters Rescue', 'info@cozycritters.org', '$2y$12$CypOqpLFVs/SEwBZJZt2ZObzn63ocYocJAs90ML2Ubn..5Q31PQci', 'agency', '555-2222', 'Anaheim, CA', NULL),
-('Alice Johnson', 'alice@example.com', '$2y$12$0AH5pLZUUksAC4bSPIn4fuVa9OYBIARLZy14jkZecvbSLFNe7cpe2', 'adopter', '555-3333', 'Fullerton, CA', 'dog'),
-('Michael Lee', 'michael@example.com', '$2y$12$JiGSgyezkQS42z4llJSfXuJphoW/ck/90bxEiDdy/pzlDkmy6AJFi', 'adopter', '555-4444', 'Irvine, CA', 'cat'),
-('Test User', 'testuser@example.com', '$2y$12$nJEjyu/.dKw4mTnhICj3AOptrCY5zH.ocmSP8Cq0CCrGmm9l87LSW', 'adopter', '123-4567', 'Los Angeles, CA', 'dog');
+('Happy Paws Shelter', 'contact@happypaws.org', '$2y$12$hIXJyObuIaW6YjcBbRqOXOigHfJxpDo0eEKlvYd140.6Kzze8YNP2', 'agency', '332-555-1111', 'Riverside, CA', NULL),
+('Cozy Critters Rescue', 'info@cozycritters.org', '$2y$12$CypOqpLFVs/SEwBZJZt2ZObzn63ocYocJAs90ML2Ubn..5Q31PQci', 'agency', '332-555-2222', 'Anaheim, CA', NULL),
+('Alice Johnson', 'alice@example.com', '$2y$12$0AH5pLZUUksAC4bSPIn4fuVa9OYBIARLZy14jkZecvbSLFNe7cpe2', 'adopter', '332-555-3333', 'Fullerton, CA', 'dog'),
+('Michael Lee', 'michael@example.com', '$2y$12$JiGSgyezkQS42z4llJSfXuJphoW/ck/90bxEiDdy/pzlDkmy6AJFi', 'adopter', '332-555-4444', 'Irvine, CA', 'cat'),
+('Test User', 'testuser@example.com', '$2y$12$nJEjyu/.dKw4mTnhICj3AOptrCY5zH.ocmSP8Cq0CCrGmm9l87LSW', 'adopter', '332-123-4567', 'Los Angeles, CA', 'dog');
 
 
 INSERT INTO pets (agency_id, name, animal_type, breed, age, status, description, city, state)
@@ -118,7 +118,22 @@ VALUES
 'Calm and low-maintenance cat who loves to nap in cozy places', 'Los Angeles', 'CA'),
 
 (2, 'Max', 'dog', 'German Shepherd', 3, 'available',
-'Playful and cuddly dog who is good with children', 'Fullerton', 'CA');
+'Playful and cuddly dog who is good with children', 'Fullerton', 'CA'),
+
+(1, 'Melody', 'bird', 'Parakeet', 2, 'available', 
+ 'Loves to mimic sounds and very friendly.', 'Long Beach', 'CA'),
+ 
+ (1, 'Lefty', 'bird', 'Lovebird', 3, 'available', 
+ 'Loves to sing birdsongs in the early morning. Paired with their best friend Righty', 'Bakersfield', 'CA'),
+ 
+ (1, 'Righty', 'bird', 'Lovebird', 3, 'available', 
+ 'Loves to fly around. Paired with their best friend Lefty', 'Bakersfield', 'CA'),
+ 
+ (1, 'Flops', 'rabbit', 'American Fuzzy Lop', 1, 'available', 
+ 'Very shy at first, but once she warms up to you, she loves to cuddle!', 'Fullerton', 'CA'),
+ 
+ (1, 'Judy', 'rabbit', 'Belgian Hare', 2, 'available', 
+ 'Energetic and lively, loves to run and hop around', 'Anaheim', 'CA');
 
 INSERT INTO inquiries (
     pet_id, adopter_id, agency_id,
