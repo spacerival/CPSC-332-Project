@@ -1,15 +1,18 @@
 <?php
+session_start();
+require_once 'db_connect.php';
 
-require_once 'db_connection.php';
+if (!isset($_SESSION['user_id'])) {
+    die("Error: You must be logged in to submit an application. <a href='login.php'>Login here</a>");
+}
 
 $pet_id = NULL;
-$adopter_id = NULL;
+$adopter_id = $_SESSION['user_id'];
 $agency_id = NULL;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // ID Stuff
-    $pet_id = $_POST['pet_id'] ?? NULL;
-    $adopter_id = $_POST['adopter_id'] ?? NULL;
+    $pet_id = isset($_POST['pet_id']) && !empty($_POST['pet_id']) ? (int)$_POST['pet_id'] : NULL;
     $agency_id = $_POST['agency_id'] ?? NULL;
 
     // Basic Info
@@ -25,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $landlord_permission = $_POST['landlord_permission'] ?? '';
 
     // Pet Experience Info
-    $has_pet_experience = $_POST['has_pet_experience'] ?? '';
+    $has_pet_experience = isset($_POST['has_pet_experience']) ? (int)$_POST['has_pet_experience'] : 0;
     $owned_dog = isset($_POST['owned_dog']) ? 1 : 0;
     $owned_cat = isset($_POST['owned_cat']) ? 1 : 0;
     $owned_bird = isset($_POST['owned_bird']) ? 1 : 0;
@@ -33,12 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $owned_rodent = isset($_POST['owned_rodent']) ? 1 : 0;
     $owned_other = isset($_POST['owned_other']) ? 1 : 0;
 
-    $has_current_pets = $_POST['has_current_pets'] ?? '';
+    $has_current_pets = isset($_POST['has_current_pets']) ? (int)$_POST['has_current_pets'] : 0;
     $current_pets_description = validate_input($_POST['current_pets_description'] ?? '');
     
     // Household Info
-    $household_num = $_POST['household_num'] ?? '';
-    $has_children = $_POST['has_children'] ?? '';
+    $household_num = isset($_POST['household_num']) ? (int)$_POST['household_num'] : 0;
+    $has_children = isset($_POST['has_children']) ? (int)$_POST['has_children'] : 0;
     $children_description = validate_input($_POST['children_description'] ?? '');
 
     // Adoption Info
@@ -57,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("iiissssssssiiiiiiiiisiisss",
+    $stmt->bind_param("iiissssssssiiiiiiiisiisss",
         $pet_id, $adopter_id, $agency_id,
         $first_name, $last_name, $address, $phone_number, $email,
         $home_type, $rent_or_own, $landlord_permission,

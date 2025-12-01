@@ -180,6 +180,24 @@ button:active {
   transform: translateY(0);
 }
 
+.small_button {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  width: 35%;
+}
+
+.approve {
+  background: #16731c;
+}
+
+.in_progress {
+  background: #d17d0f;
+}
+
+.deny {
+  background: #910b09;
+}
+
 .content p {
   text-align: center;
   margin-top: 1.5rem;
@@ -255,6 +273,10 @@ a:visited {
 
 .format {
   margin: 10% 15% 0 10%;
+}
+
+.format a {
+  color: blue;
 }
 
 .grid {

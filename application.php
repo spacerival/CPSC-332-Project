@@ -1,6 +1,43 @@
 <?php
-require 'config.php';
+// Auto-fill info once user is logged in
+session_start();
+require_once 'db_connect.php';
+
+$logged_in_fname = '';
+$logged_in_lname = '';
+$logged_in_name = '';
+$logged_in_email = '';
+$logged_in_phone = '';
+$logged_in_address = '';
+
+$is_logged_in = isset($_SESSION['user_id']);
+$user_name = $is_logged_in ? $_SESSION['name'] : '';
+
+if (isset($_SESSION['user_id'])) {
+  $user_id = $_SESSION['user_id'];
+  $sql = "SELECT name, email, phone, address FROM users WHERE user_id = ?";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("i", $user_id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+
+  if ($result->num_rows === 1) {
+    $user = $result->fetch_assoc();
+
+    // Signup takes in one "name" field, this splits into first and last name
+    $name_parts = explode(' ', $user['name'], 2);
+    $logged_in_fname = $name_parts[0];
+    $logged_in_lname = isset($name_parts[1]) ? $name_parts[1] : '';
+
+    $logged_in_name = $user['name'];
+    $logged_in_email = $user['email'];
+    $logged_in_phone = $user['phone'] ?? '';
+    $logged_in_address = $user['address'] ?? '';
+  }
+  $stmt->close();
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,34 +50,47 @@ require 'config.php';
   <body>
     <div class="navbar">
       <a href="frontpage.php">PetMatch <i class="fa-solid fa-paw"></i></a>
-      <a href="login_index.php">Login</a>
-      <a href="signup.php">Sign Up</a>
       <a class="active" href="application.php">Application</a>
       <a href="searchpage.php">Adopt</a>
+      <?php if (!$is_logged_in): ?>
+        <a href="login_index.php">Login</a>
+        <a href="signup.php">Sign Up</a>
+      <?php else: ?>
+        <a href="user_profile.php"><i class="fa-solid fa-circle-user"> 
+          </i><?php echo htmlspecialchars($user_name); ?></a>
+        <a href="logout.php">Logout</a>
+      <?php endif; ?>
     </div>
 
     <div class="format">
       <h1>PetMatch Application</h1><br>
+      
       <form action="process_application.php" method="POST">
         <label for="first_name">First Name</label>
         <input type="text" id="first_name" name="first_name"
+          value="<?php echo htmlspecialchars($logged_in_fname); ?>" 
           placeholder="Type here..." required>
         <label for="last_name">Last Name</label>
         <input type="text" id="last_name" name="last_name"
+          value="<?php echo htmlspecialchars($logged_in_lname); ?>" 
           placeholder="Type here..." required>
         <br><br>
 
         <label for="address">Address (Street Number + Name, City, Zipcode, Country) </label>
         <input type="text" id="address" name="address" size="75"
+          value="<?php echo htmlspecialchars($logged_in_address); ?>"
           placeholder="Type here..." required><br>
         <br>
 
         <label for="phone_number">Phone Number</label>
         <input type="tel" id="phone_number" name="phone_number" 
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="10"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12"
+            value="<?php echo htmlspecialchars($logged_in_phone); ?>"
             placeholder="Type here..." required><br><br>
         <label for="email">Email</label>
-        <input type="text" id="email" name="email" placeholder="Type here..." required>
+        <input type="text" id="email" name="email" 
+               value="<?php echo htmlspecialchars($logged_in_email); ?>"
+               placeholder="Type here..." required>
         <br><br>
       
 
@@ -117,7 +167,36 @@ require 'config.php';
 
         <h2>Adoption Questions</h2>
         <p class="question"><b>Which pet are you interested in adopting?</b></p>
-        <input type="text" name="pet_id" placeholder="*later implement dropdown here*" size="25" required><br>
+        <select name="pet_id" id="pet_id" required>
+          <option value="">--- Select a Pet ---</option>
+          <?php
+
+            if (!$conn) {
+              die("Database connection failed. Please try again later.");
+            }
+
+            $pet_query = "SELECT pet_id, name, animal_type, breed, city, state
+                          FROM pets
+                          WHERE status = 'available'
+                          ORDER BY name";
+            $result = $conn->query($pet_query);
+
+            if ($result && $result->num_rows > 0) {
+              while ($pet = $result->fetch_assoc()) {
+                $display_text = htmlspecialchars($pet['name']) . " - " . 
+                                htmlspecialchars($pet['animal_type']) . " (" . 
+                                htmlspecialchars($pet['breed']) . ") - " .
+                                htmlspecialchars($pet['city']) . ", " . 
+                                htmlspecialchars($pet['state']);
+            
+                echo '<option value="' . $pet['pet_id'] . '">' . $display_text . '</option>';
+              }
+            } else {
+              echo '<option value="">No pets available at this time</option>';
+            }
+            ?>
+        </select>
+        <br>
         <p><b>Why do you want to adopt this pet?</b></p>
         <textarea id="adoption_reason" name="adoption_reason" rows="7" cols="75" required></textarea>
         <br>
@@ -131,6 +210,13 @@ require 'config.php';
         </select><br>
         <button type="submit">Submit Application</button>
       </form>
+      
+      <?php
+
+      if (isset($conn)) {
+        $conn->close();
+      }
+      ?>
     </div>
     
   </body>

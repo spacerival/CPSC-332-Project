@@ -1,6 +1,12 @@
 <?php
-require 'config.php';
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
+$is_logged_in = isset($_SESSION['user_id']);
+$user_name = $is_logged_in ? $_SESSION['name'] : '';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,26 +22,32 @@ require 'config.php';
 
     <!-- Navigation bar -->
     <div class="navbar">
-      <a href="frontpage.php">PetMatch <i class="fa-solid fa-paw"></i></a>
-      <a class="active" href="login_index.php">Login</a>
-      <a href="signup.php">Sign Up</a>
+      <a class="active" href="frontpage.php">PetMatch <i class="fa-solid fa-paw"></i></a>
       <a href="application.php">Application</a>
       <a href="searchpage.php">Adopt</a>
+      <?php if (!$is_logged_in): ?>
+        <a href="login_index.php">Login</a>
+        <a href="signup.php">Sign Up</a>
+      <?php else: ?>
+        <a href="user_profile.php"><i class="fa-solid fa-circle-user"> 
+          </i><?php echo htmlspecialchars($user_name); ?></a>
+        <a href="logout.php">Logout</a>
+      <?php endif; ?>
     </div>
 
     <!-- Main content container -->
     <div class="content">
       <h1>PetMatch: Login</h1>
       <form action="process_login.php" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required />
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
         <br />
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required />
         <br />
         <button type="submit">Login</button>
       </form>
-      <p>Don't have an account? <a href="signup.html">Sign up here</a>.</p>
+      <p>Don't have an account? <a href="signup.php">Sign up here</a>.</p>
     </div>
   </body>
 </html>

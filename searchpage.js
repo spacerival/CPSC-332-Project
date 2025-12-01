@@ -1,86 +1,30 @@
-// Sample pet data
-const pets = [
-  {
-    id: 1,
-    name: "Buddy",
-    type: "dog",
-    breed: "Golden Retriever",
-    age: "2 years",
-    location: "New York Shelter",
-    image:
-      "https://images.unsplash.com/photo-1552053831-71594a27632d?w=300&h=200&fit=crop",
-  },
-  {
-    id: 2,
-    name: "Luna",
-    type: "cat",
-    breed: "Siamese",
-    age: "1 year",
-    location: "LA Rescue Center",
-    image:
-      "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=300&h=200&fit=crop",
-  },
-  {
-    id: 3,
-    name: "Max",
-    type: "dog",
-    breed: "German Shepherd",
-    age: "3 years",
-    location: "Chicago Shelter",
-    image:
-      "https://images.unsplash.com/photo-1560743641-3914f2c45636?w=300&h=200&fit=crop",
-  },
-  {
-    id: 4,
-    name: "Bella",
-    type: "cat",
-    breed: "Maine Coon",
-    age: "4 years",
-    location: "Miami Rescue",
-    image:
-      "https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=300&h=200&fit=crop",
-  },
-  {
-    id: 5,
-    name: "Coco",
-    type: "rabbit",
-    breed: "Holland Lop",
-    age: "6 months",
-    location: "Boston Shelter",
-    image:
+// Function to get placeholder image based on animal type
+function getPlaceholderImage(animalType) {
+  const images = {
+    dog: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=300&h=200&fit=crop",
+    cat: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=300&h=200&fit=crop",
+    rabbit:
       "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=300&h=200&fit=crop",
-  },
-  {
-    id: 6,
-    name: "Charlie",
-    type: "bird",
-    breed: "Parakeet",
-    age: "1 year",
-    location: "Seattle Rescue",
-    image:
-      "https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=300&h=200&fit=crop",
-  },
-  {
-    id: 7,
-    name: "Rocky",
-    type: "dog",
-    breed: "Bulldog",
-    age: "5 years",
-    location: "Dallas Shelter",
-    image:
-      "https://cdn.britannica.com/07/234207-050-0037B589/English-bulldog-dog.jpg",
-  },
-  {
-    id: 8,
-    name: "Misty",
-    type: "cat",
-    breed: "Persian",
-    age: "2 years",
-    location: "Denver Rescue",
-    image:
-      "https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=300&h=200&fit=crop",
-  },
-];
+    bird: "https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=300&h=200&fit=crop",
+  };
+
+  return (
+    images[animalType] ||
+    "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=300&h=200&fit=crop"
+  );
+}
+
+// Function to fetch pets from database
+async function fetchPetsFromDatabase() {
+  try {
+    const response = await fetch("get_pets.php"); // We'll create this file
+    const pets = await response.json();
+    return pets;
+  } catch (error) {
+    console.error("Error fetching pets:", error);
+    return [];
+  }
+}
 
 // DOM elements
 const petsGrid = document.getElementById("petsGrid");
@@ -89,10 +33,13 @@ const filterButtons = document.querySelectorAll(".filter-btn");
 
 let currentFilter = "all";
 let currentSearch = "";
+let allPets = []; // This will hold our database pets
 
 // Initialize the page
-function init() {
-  displayPets(pets);
+async function init() {
+  // Fetch pets from database
+  allPets = await fetchPetsFromDatabase();
+  displayPets(allPets);
   setupEventListeners();
 }
 
@@ -107,22 +54,22 @@ function displayPets(petsToDisplay) {
   petsGrid.innerHTML = petsToDisplay
     .map(
       (pet) => `
-        <div class="pet-card" data-type="${pet.type}">
-            <img src="${pet.image}" alt="${pet.name}" class="pet-image">
-            <div class="pet-name">${pet.name}</div>
-            <div class="pet-breed">${pet.breed}</div>
-            <div class="pet-age">${pet.age}</div>
-            <div class="pet-location">${pet.location}</div>
-            <button class="adopt-btn" onclick="adoptPet(${pet.id})">Adopt ${pet.name}</button>
-        </div>
-    `
+                <div class="pet-card" data-type="${pet.type}">
+                    <img src="${pet.image}" alt="${pet.name}" class="pet-image">
+                    <div class="pet-name">${pet.name}</div>
+                    <div class="pet-breed">${pet.breed}</div>
+                    <div class="pet-age">${pet.age}</div>
+                    <div class="pet-location">${pet.location}</div>
+                    <button class="adopt-btn" onclick="adoptPet(${pet.id})">Adopt ${pet.name}</button>
+                </div>
+            `
     )
     .join("");
 }
 
 // Filter and search pets
 function filterPets() {
-  let filteredPets = pets;
+  let filteredPets = allPets;
 
   // Apply type filter
   if (currentFilter !== "all") {
@@ -167,13 +114,13 @@ function setupEventListeners() {
 
 // Adopt pet function
 function adoptPet(petId) {
-  const pet = pets.find((p) => p.id === petId);
+  const pet = allPets.find((p) => p.id === petId);
   if (pet) {
     alert(
       `Thank you for your interest in adopting ${pet.name}! Please complete the adoption application form.`
     );
-    // Redirect to application page or open modal
-    window.location.href = "application.php";
+    // Redirect to application page
+    window.location.href = "application.php?pet_id=" + petId;
   }
 }
 

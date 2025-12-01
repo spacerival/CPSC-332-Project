@@ -1,6 +1,12 @@
 <?php
-require 'config.php';
+if (session_status() === PHP_SESSION_NONE) {
+  session_start();
+}
+
+$is_logged_in = isset($_SESSION['user_id']);
+$user_name = $is_logged_in ? $_SESSION['name'] : '';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,18 +22,24 @@ require 'config.php';
 
     <!-- Navigation bar -->
     <div class="navbar">
-      <a href="frontpage.php">PetMatch <i class="fa-solid fa-paw"></i></a>
-      <a href="login_index.php">Login</a>
-      <a class="active" href="signup.php">Sign Up</a>
+      <a class="active" href="frontpage.php">PetMatch <i class="fa-solid fa-paw"></i></a>
       <a href="application.php">Application</a>
       <a href="searchpage.php">Adopt</a>
+      <?php if (!$is_logged_in): ?>
+        <a href="login_index.php">Login</a>
+        <a href="signup.php">Sign Up</a>
+      <?php else: ?>
+        <a href="user_profile.php"><i class="fa-solid fa-circle-user"> 
+          </i><?php echo htmlspecialchars($user_name); ?></a>
+        <a href="logout.php">Logout</a>
+      <?php endif; ?>
     </div>
 
     <!-- Main content container -->
     <div class="content">
       <h1>PetMatch: Profile Creation</h1>
       <form form action="process_signup.php" method="POST">
-        <label for="name">First and Last Name:</label>
+        <label for="name">Full Name:</label>
         <input type="text" id="name" name="name" required />
         <br />
         <!-- TO DO: Add a confirm password line. (having the user input the password twice to confirm) -->
@@ -46,7 +58,7 @@ require 'config.php';
         <label for="pet">Pet Interested In:</label>
         <input type="text" id="pet" name="pet" required />
         <br />
-        <button type="submit">Submit Application</button>
+        <button type="submit">Create Account</button>
       </form>
       <p>Already have an account? <a href="login_index.html">Login here</a>.</p>
     </div>
