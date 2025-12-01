@@ -22,11 +22,11 @@ require 'config.php';
     <div class="format">
       <h1>PetMatch Application</h1><br>
       <form action="process_application.php" method="POST">
-        <label for="first-name">First Name</label>
-        <input type="text" id="first-name" name="first-name"
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" name="first_name"
           placeholder="Type here..." required>
-        <label for="last-name">Last Name</label>
-        <input type="text" id="last-name" name="last-name"
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name" name="last_name"
           placeholder="Type here..." required>
         <br><br>
 
@@ -35,8 +35,8 @@ require 'config.php';
           placeholder="Type here..." required><br>
         <br>
 
-        <label for="phone-number">Phone Number</label>
-        <input type="tel" id="phone-number" name="phone-number" 
+        <label for="phone_number">Phone Number</label>
+        <input type="tel" id="phone_number" name="phone_number" 
             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="10"
             placeholder="Type here..." required><br><br>
         <label for="email">Email</label>
@@ -46,83 +46,83 @@ require 'config.php';
 
         <h2>Housing Information</h2>
         <p class="question"><b>What type of home do you currently live in?</b></p>
-        <input type="radio" id="house" name="home-type" value="house" required>
+        <input type="radio" id="house" name="home_type" value="house" required>
         <label for="house">House</label><br>
-        <input type="radio" id="apartment" name="home-type" value="apartment">
+        <input type="radio" id="apartment" name="home_type" value="apartment">
         <label  for="apartment">Apartment</label><br>
-        <input type="radio" id="rv-trailer" name="home-type" value="rv-trailer">
+        <input type="radio" id="rv-trailer" name="home_type" value="rv-trailer">
         <label for="rv-trailer">RV/Trailer</label>
         
         <p class="question"><b>Do you rent or own?</b></p>
-        <input type="radio" id="renter" name="is-rent" value="renter" required>
+        <input type="radio" id="renter" name="rent_or_own" value="renter" required>
         <label for="renter">Yes, I do rent</label><br>
-        <input type="radio" id="homeowner" name="is-rent" value="homeowner">
+        <input type="radio" id="homeowner" name="rent_or_own" value="homeowner">
         <labelfor="homeowner">No, I own my home</label>
 
         <p class="question"><b>If you're <em>renting</em>, do you have permission from your landlord to keep pets?</b></p>
-        <input type="radio" id="landlord-allowed" name="landlord-permission" value="landlord-allowed" required>
+        <input type="radio" id="landlord-allowed" name="landlord_permission" value="landlord-allowed" required>
         <label for="landlord-allowed">Yes</label><br>
-        <input type="radio" id="landlord-unallowed" name="landlord-permission" value="landlord-unallowed">
-        <label for="landlord-unallowed">No</label><br>
-        <input type="radio" id="landlord-inapplicable" name="landlord-permission" value="landlord-inapplicable">
-        <label for="landlord-inapplicable">Inapplicable</label>
+        <input type="radio" id="landlord-unallowed" name="landlord_permission" value="landlord-unallowed">
+        <label for="landlord_unallowed">No</label><br>
+        <input type="radio" id="landlord-inapplicable" name="landlord_permission" value="landlord-inapplicable">
+        <label for="landlord_inapplicable">Inapplicable</label>
 
 
         <h2>Pet Experience</h2>
         <p class="question"><b>Have you owned a pet before?</b></p>
-        <input type="radio" id="has-pet-experience" name="pet-experience" value="has-pet-experience" required>
-        <label for="has-pet-experience">Yes, I have owned a pet before</label><br>
-        <input type="radio" id="no-pet-experience" name="pet-experience" value="no-pet-experience">
-        <label for="no-pet-experience">No, this is my first time</label>
+        <input type="radio" id="has_pet_experience" name="has_pet_experience" value="1" required>
+        <label for="has_pet_experience">Yes, I have owned a pet before</label><br>
+        <input type="radio" id="no_pet_experience" name="has_pet_experience" value="0">
+        <label for="no_pet_experience">No, this is my first time</label>
       
 
         <p class="question"><b>If you <em>have</em> owned a pet before, what kinds? 
           <i>Please select all that apply.</i></b></p>
-        <input type="checkbox" id="owned-dog" name="owned-pet-type" value="owned-dog">
-        <label for="owned-dog">Dog</label><br>
-        <input type="checkbox" id="owned-cat" name="owned-pet-type" value="owned-cat">
-        <label for="owned-cat">Cat</label><br>
-        <input type="checkbox" id="owned-bird" name="owned-pet-type" value="owned-bird">
-        <label for="owned-bird">Bird</label><br>
-        <input type="checkbox" id="owned-reptile" name="owned-pet-type" value="owned-reptile">
-        <label for="owned-reptile">Reptile</label><br>
-        <input type="checkbox" id="owned-rodent" name="owned-pet-type" value="owned-rodent">
-        <label for="owned-rodent">Rodent</label><br>
-        <input type="checkbox" id="owned-other" name="owned-pet-type" value="owned-other">
-        <label for="owned-other">Other</label>
+        <input type="checkbox" id="owned_dog" name="owned_dog" value="1">
+        <label for="owned_dog">Dog</label><br>
+        <input type="checkbox" id="owned_cat" name="owned_cat" value="1">
+        <label for="owned_cat">Cat</label><br>
+        <input type="checkbox" id="owned_bird" name="owned_bird" value="1">
+        <label for="owned_bird">Bird</label><br>
+        <input type="checkbox" id="owned_reptile" name="owned_reptile" value="1">
+        <label for="owned_reptile">Reptile</label><br>
+        <input type="checkbox" id="owned_rodent" name="owned_rodent" value="1">
+        <label for="owned_rodent">Rodent</label><br>
+        <input type="checkbox" id="owned_other" name="owned_other" value="1">
+        <label for="owned_other">Other</label>
 
         <p class="question"><b>Do you currently have other pets?</b></p>
-        <input type="radio" id="current-pet-owner" name="is-pet-owner" value="current-pet-owner" required>
-        <label for="has-pet-experience">Yes, I do</label><br>
-        <input type="radio" id="not-pet-owner" name="is-pet-owner" value="not-pet-owner">
-        <label for="no-pet-experience">No, I don't</label>
+        <input type="radio" id="current_pet_owner" name="has_current_pets" value="1" required>
+        <label for="has_pet_experience">Yes, I do</label><br>
+        <input type="radio" id="not_pet_owner" name="has_current_pets" value="0">
+        <label for="no_pet_experience">No, I don't</label>
 
         <p class="question"><b>If you <em>do</em> currently own pets, please describe them</b></p>
-        <textarea id="pet-description" name="pet-description" rows="7" cols="75"></textarea>
+        <textarea id="current_pets_description" name="current_pets_description" rows="7" cols="75"></textarea>
         
         <h2>Household Information</h2>
-        <label for="household-num">How many people currently live in your household?</label>
-        <input type="number" id="household-num" name="household-num" placeholder="Type here..." required>
+        <label for="household_num">How many people currently live in your household?</label>
+        <input type="number" id="household_num" name="household_num" placeholder="Type here..." required>
 
         <p class="question"><b>Do you have children?</b></p>
-        <input type="radio" id="has-children" name="children-status" value="has-children" required>
-        <label for="has-children">Yes, I do</label><br>
-        <input type="radio" id="no-children" name="children-status" value="no-children">
-        <label for="no-children">No, I don't</label>
+        <input type="radio" id="has_children" name="has_children" value="1" required>
+        <label for="has_children">Yes, I do</label><br>
+        <input type="radio" id="no_children" name="has_children" value="0">
+        <label for="no_children">No, I don't</label>
 
         <!--Placeholder. Perhaps later have one input field ask how many children and 'x' amount of fields will
         pop up depending on the inputed value asking for the ages of each-->
         <p class="question"><b>If you <em>do</em> have children, please state how many and how old each of them are</b></p>
-        <textarea id="children-description" name="children-description" rows="7" cols="75"></textarea>
+        <textarea id="children_description" name="children_description" rows="7" cols="75"></textarea>
 
         <h2>Adoption Questions</h2>
         <p class="question"><b>Which pet are you interested in adopting?</b></p>
-        <input type="text" placeholder="*later implement dropdown here*" size="25" required><br>
+        <input type="text" name="pet_id" placeholder="*later implement dropdown here*" size="25" required><br>
         <p><b>Why do you want to adopt this pet?</b></p>
-        <textarea id="adoption-reason" name="adoption-reason" rows="7" cols="75" required></textarea>
+        <textarea id="adoption_reason" name="adoption_reason" rows="7" cols="75" required></textarea>
         <br>
-        <label for="hours-pet-alone">How many hours a day will the pet be alone?</label>
-        <select name="hours-pet-alone" id="hours-pet-alone" required>
+        <label for="hours_pet_alone">How many hours a day will the pet be alone?</label>
+        <select name="hours_pet_alone" id="hours_pet_alone" required>
           <option value="">--- Select # of Hours ---</option>
           <option value="alone-02">0 - 2 hours</option>
           <option value="alone-35">3 - 5 hours</option>
@@ -161,7 +161,7 @@ require 'config.php';
           If so, how many? (#) How old are each of them? (#)
 
       Adoption Questions
-        Which pet are you interested in adopting? (dropdown from database)
+        Which pet are you interested in adopting? (dropdown from database, not implemented yet)
         Why do you want to adopt this pet? (text area)
         How many hours a day will the pet be alone? (dropdown: 0-2, 3-5, 6-8, 8+)
 

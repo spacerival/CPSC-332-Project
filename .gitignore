@@ -5,6 +5,3 @@ config.php
 *.log
 .env
 node_modules/
-
-db_test.php
-db_connect.php
