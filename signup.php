@@ -22,12 +22,12 @@ $user_name = $is_logged_in ? $_SESSION['name'] : '';
 
     <!-- Navigation bar -->
     <div class="navbar">
-      <a class="active" href="frontpage.php">PetMatch <i class="fa-solid fa-paw"></i></a>
+      <a href="frontpage.php">PetMatch <i class="fa-solid fa-paw"></i></a>
       <a href="application.php">Application</a>
       <a href="searchpage.php">Adopt</a>
       <?php if (!$is_logged_in): ?>
         <a href="login_index.php">Login</a>
-        <a href="signup.php">Sign Up</a>
+        <a class="active" href="signup.php">Sign Up</a>
       <?php else: ?>
         <a href="user_profile.php"><i class="fa-solid fa-circle-user"> 
           </i><?php echo htmlspecialchars($user_name); ?></a>
@@ -60,7 +60,7 @@ $user_name = $is_logged_in ? $_SESSION['name'] : '';
         <br />
         <button type="submit">Create Account</button>
       </form>
-      <p>Already have an account? <a href="login_index.html">Login here</a>.</p>
+      <p>Already have an account? <a href="login_index.php">Login here</a>.</p>
     </div>
   </body>
 </html>
