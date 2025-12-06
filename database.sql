@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS inquiries (
     
     -- links to other tables
     pet_id INT NOT NULL, 
-    adopter_id INT NOT NULL, 
+    adopter_id INT NULL, -- Can create inquiries as a guest
     agency_id INT NOT NULL, 
     
     -- contact info

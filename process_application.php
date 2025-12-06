@@ -2,18 +2,33 @@
 session_start();
 require_once 'db_connect.php';
 
-if (!isset($_SESSION['user_id'])) {
-    die("Error: You must be logged in to submit an application. <a href='login.php'>Login here</a>");
-}
+$is_logged_in = isset($_SESSION['user_id']);
 
 $pet_id = NULL;
-$adopter_id = $_SESSION['user_id'];
-$agency_id = NULL;
+$adopter_id = $is_logged_in ? $_SESSION['user_id'] : NULL;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // ID Stuff
     $pet_id = isset($_POST['pet_id']) && !empty($_POST['pet_id']) ? (int)$_POST['pet_id'] : NULL;
-    $agency_id = $_POST['agency_id'] ?? NULL;
+
+    if ($pet_id === NULL) {
+        die("Error: Please select a pet.");
+    }
+    
+    // **NEW: Look up the agency_id from the pet**
+    $sql = "SELECT agency_id FROM pets WHERE pet_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $pet_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows === 0) {
+        die("Error: Invalid pet selected.");
+    }
+
+    $pet_data = $result->fetch_assoc();
+    $agency_id = $pet_data['agency_id'];
+    $stmt->close();
 
     // Basic Info
     $first_name = validate_input($_POST['first_name'] ?? '');

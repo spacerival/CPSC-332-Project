@@ -13,7 +13,7 @@ $logged_in_address = '';
 $is_logged_in = isset($_SESSION['user_id']);
 $user_name = $is_logged_in ? $_SESSION['name'] : '';
 
-if (isset($_SESSION['user_id'])) {
+if ($is_logged_in) {
   $user_id = $_SESSION['user_id'];
   $sql = "SELECT name, email, phone, address FROM users WHERE user_id = ?";
   $stmt = $conn->prepare($sql);
@@ -64,6 +64,12 @@ if (isset($_SESSION['user_id'])) {
 
     <div class="format">
       <h1>PetMatch Application</h1><br>
+      <?php if ($is_logged_in): ?>
+        <p><em>Welcome! Your information has been auto-filled.</em></p>
+      <?php else: ?>
+        <p><em>You're submitting as a guest. <a href="login_index.php">Login</a> to auto-fill your information
+        or <a href="signup.php">register</a> with us and create an account</em></p>
+      <?php endif; ?>
       
       <form action="process_application.php" method="POST">
         <label for="first_name">First Name</label>
