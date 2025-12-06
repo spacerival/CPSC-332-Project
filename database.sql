@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS inquiries (
     -- links to other tables
     pet_id INT NOT NULL, 
     adopter_id INT NOT NULL, 
-    agency_id INT NULL, -- Temporarily NULl until we implement database
+    agency_id INT NOT NULL, 
     
     -- contact info
     first_name VARCHAR(50) NOT NULL,
