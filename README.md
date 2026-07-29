@@ -15,6 +15,7 @@ PetMatch is a website connecting pets in need of a forever home with potential n
 2. Have PHP installed
 3. VSCode
 4. Install the extension "PHP Intelephense" to run the code and see the website
+5. Pull files from repo
 
 
 ## How to run
